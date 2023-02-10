@@ -1,4 +1,3 @@
-import { PropTypes } from 'prop-types';
 import FriendItem from '../Friends/Friends';
 import friends from '../../friends';
 import css from './Friends.module.css';

@@ -1,6 +1,5 @@
 import { PropTypes } from 'prop-types';
 import css from './Friends.module.css';
-const statusOnline = document.querySelector('#status');
 
 const FriendItem = ({ avatar, name, isOnline }) => {
   return (

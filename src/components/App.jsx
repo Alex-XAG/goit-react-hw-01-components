@@ -3,8 +3,7 @@ import Statistics from '../components/Statistics/Statistics';
 import FriendList from './Friends/FriendList';
 import TransactionList from './Transactions/TransactionList';
 import dataCard from '../user';
-import friends from '../friends';
-export default function () {
+export default function App() {
   return (
     <div>
       <Profile
