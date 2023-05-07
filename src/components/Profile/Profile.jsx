@@ -1,8 +1,18 @@
 import { PropTypes } from 'prop-types';
-import css from './Profile.module.css';
-const Profile = ({
+import {
+  ProfileBox,
+  Description,
+  Avatar,
+  UserName,
+  TagLocation,
+  Stats,
+  StatsItem,
+  Label,
+  Quantity,
+} from './Profile.styled';
+
+export const Profile = ({
   url,
-  alt,
   userName,
   tag,
   location,
@@ -11,41 +21,38 @@ const Profile = ({
   likes,
 }) => {
   return (
-    <div className={css.profile}>
-      <div className={css.description}>
-        <img src={url} alt={alt} className={css.avatar} />
-        <p className={css.name}>{userName}</p>
-        <p className={css.tag}>{tag}</p>
-        <p className={css.location}>{location}</p>
-      </div>
+    <ProfileBox>
+      <Description>
+        <Avatar src={url} alt={userName} />
+        <UserName>{userName}</UserName>
+        <TagLocation>{`@${tag}`}</TagLocation>
+        <TagLocation>{location}</TagLocation>
+      </Description>
 
-      <ul className={css.stats}>
-        <li className={css.profile__item}>
-          <span className={css.label}>Followers</span>
-          <span className={css.quantity}>{followers}</span>
-        </li>
-        <li className={css.profile__item}>
-          <span className={css.label}>Views</span>
-          <span className={css.quantity}>{views}</span>
-        </li>
-        <li className={css.profile__item}>
-          <span className={css.label}>Likes</span>
-          <span className={css.quantity}>{likes}</span>
-        </li>
-      </ul>
-    </div>
+      <Stats>
+        <StatsItem>
+          <Label>Followers</Label>
+          <Quantity>{followers}</Quantity>
+        </StatsItem>
+        <StatsItem>
+          <Label>Views</Label>
+          <Quantity>{views}</Quantity>
+        </StatsItem>
+        <StatsItem>
+          <Label>Likes</Label>
+          <Quantity>{likes}</Quantity>
+        </StatsItem>
+      </Stats>
+    </ProfileBox>
   );
 };
 
 Profile.propTypes = {
-  url: PropTypes.string,
-  alt: PropTypes.string,
-  userName: PropTypes.string,
-  tag: PropTypes.string,
-  location: PropTypes.string,
-  followers: PropTypes.number,
-  views: PropTypes.number,
-  likes: PropTypes.number,
+  url: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  followers: PropTypes.number.isRequired,
+  views: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
 };
-
-export default Profile;

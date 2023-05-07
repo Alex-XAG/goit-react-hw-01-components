@@ -1,17 +1,25 @@
 import { PropTypes } from 'prop-types';
 import css from './Statistics.module.css';
-const StatisticItem = ({ label, percentage }) => {
+import { Item, Label, Percentage } from './Statistics.styled';
+import { getRandom } from '../../constants';
+
+export const StatisticItem = ({ label, percentage }) => {
   return (
-    <li className={css.item}>
-      <span className={css.label}>{label}</span>
-      <span className={css.percentage}>{percentage}%</span>
-    </li>
+    <Item
+      style={{
+        backgroundColor: `rgb(${getRandom(0, 255)}, ${getRandom(
+          0,
+          255
+        )}, ${getRandom(0, 255)})`,
+      }}
+    >
+      <Label>{label}</Label>
+      <Percentage>{percentage}%</Percentage>
+    </Item>
   );
 };
 
 StatisticItem.propTypes = {
-  label: PropTypes.string,
-  percentage: PropTypes.number,
+  label: PropTypes.string.isRequired,
+  percentage: PropTypes.number.isRequired,
 };
-
-export default StatisticItem;

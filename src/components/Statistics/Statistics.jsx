@@ -1,12 +1,14 @@
 import { PropTypes } from 'prop-types';
-import StatisticItem from './StatisticItem';
+import { StatisticItem } from './StatisticItem';
 import dataStats from '../../data';
 import css from './Statistics.module.css';
-const Statistics = ({ label, percentage, title = 'UPLOAD STATS' }) => {
+import { StatisticSection, TitleStat, StatList } from './Statistics.styled';
+
+const Statistics = ({ title = 'UPLOAD STATS' }) => {
   return (
-    <section className={css.statistics}>
-      <h2 className={css.title}>{title}</h2>
-      <ul className={css.stat__list}>
+    <StatisticSection>
+      <TitleStat>{title}</TitleStat>
+      <StatList>
         {dataStats.map(dataStat => (
           <StatisticItem
             key={dataStat.id}
@@ -14,14 +16,13 @@ const Statistics = ({ label, percentage, title = 'UPLOAD STATS' }) => {
             percentage={dataStat.percentage}
           />
         ))}
-      </ul>
-    </section>
+      </StatList>
+    </StatisticSection>
   );
 };
 
 Statistics.propTypes = {
-  label: PropTypes.string,
-  percentage: PropTypes.number,
+  title: PropTypes.string,
 };
 
 export default Statistics;
