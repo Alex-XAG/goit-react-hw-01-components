@@ -1,4 +1,5 @@
 import { TrItem, Td } from './Transactions.styled';
+import PropTypes from 'prop-types';
 
 export const TransactionItem = ({ type, amount, currency }) => {
   return (
@@ -8,4 +9,10 @@ export const TransactionItem = ({ type, amount, currency }) => {
       <Td>{currency}</Td>
     </TrItem>
   );
+};
+
+TransactionItem.propTypes = {
+  type: PropTypes.string.isRequired,
+  amount: PropTypes.string,
+  currency: PropTypes.string.isRequired,
 };
