@@ -1,10 +1,10 @@
 import { Profile } from '../components/Profile/Profile';
-import Statistics from '../components/Statistics/Statistics';
-import FriendList from './Friends/FriendList';
-import TransactionList from './Transactions/TransactionList';
+import { Statistics } from '../components/Statistics/Statistics';
+import { FriendList } from './Friends/FriendList';
+import { TransactionList } from './Transactions/TransactionList';
 import dataUser from '../user';
 
-export default function App() {
+export const App = () => {
   return (
     <div>
       <Profile
@@ -25,4 +25,4 @@ export default function App() {
       <TransactionList />
     </div>
   );
-}
+};

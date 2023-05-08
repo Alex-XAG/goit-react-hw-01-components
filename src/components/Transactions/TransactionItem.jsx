@@ -1,13 +1,11 @@
-import css from './Transactions.module.css';
+import { TrItem, Td } from './Transactions.styled';
 
-const TransactionItem = ({ type, amount, currency }) => {
+export const TransactionItem = ({ type, amount, currency }) => {
   return (
-    <tr className={css.transaction__item}>
-      <td>{type}</td>
-      <td>{amount}</td>
-      <td>{currency}</td>
-    </tr>
+    <TrItem>
+      <Td>{type}</Td>
+      <Td>{amount}</Td>
+      <Td>{currency}</Td>
+    </TrItem>
   );
 };
-
-export default TransactionItem;

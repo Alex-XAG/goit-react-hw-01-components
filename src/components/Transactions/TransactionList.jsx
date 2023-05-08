@@ -1,32 +1,30 @@
-import TransactionItem from './TransactionItem';
+import { TransactionItem } from './TransactionItem';
 import transactions from '../../transactions';
-import css from './Transactions.module.css';
+import { TrHistory, Thead } from './Transactions.styled';
 
-const TransactionList = ({ type, amount, currency }) => {
+export const TransactionList = () => {
   return (
-    <table className={css.transaction__history}>
-      <thead className={css.transaction__head}>
+    <TrHistory>
+      <Thead>
         <tr>
           <th>Type</th>
           <th>Amount</th>
           <th>Currency</th>
         </tr>
-      </thead>
+      </Thead>
 
-      <tbody className={css.transaction__list}>
-        {transactions.map(transaction => {
+      <tbody>
+        {transactions.map(({ type, amount, currency, id }) => {
           return (
             <TransactionItem
-              key={transaction.id}
-              type={transaction.type}
-              amount={transaction.amount}
-              currency={transaction.currency}
+              key={id}
+              type={type}
+              amount={amount}
+              currency={currency}
             />
           );
         })}
       </tbody>
-    </table>
+    </TrHistory>
   );
 };
-
-export default TransactionList;

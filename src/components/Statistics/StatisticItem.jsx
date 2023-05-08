@@ -1,5 +1,4 @@
 import { PropTypes } from 'prop-types';
-import css from './Statistics.module.css';
 import { Item, Label, Percentage } from './Statistics.styled';
 import { getRandom } from '../../constants';
 
