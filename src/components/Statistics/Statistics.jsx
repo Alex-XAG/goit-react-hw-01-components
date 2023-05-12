@@ -1,19 +1,29 @@
 import { PropTypes } from 'prop-types';
-import { StatisticItem } from './StatisticItem';
-import dataStats from '../../data';
-import { StatisticSection, TitleStat, StatList } from './Statistics.styled';
+import { randomColor } from '../../constants';
+import {
+  StatisticSection,
+  TitleStat,
+  StatList,
+  Item,
+  Label,
+  Percentage,
+} from './Statistics.styled';
 
-export const Statistics = ({ title = 'UPLOAD STATS' }) => {
+export const Statistics = ({ title, dataStats }) => {
   return (
     <StatisticSection>
       <TitleStat>{title}</TitleStat>
       <StatList>
-        {dataStats.map(dataStat => (
-          <StatisticItem
-            key={dataStat.id}
-            label={dataStat.label}
-            percentage={dataStat.percentage}
-          />
+        {dataStats.map(({ id, label, percentage }) => (
+          <Item
+            key={id}
+            style={{
+              backgroundColor: randomColor(),
+            }}
+          >
+            <Label>{label}</Label>
+            <Percentage>{percentage}%</Percentage>
+          </Item>
         ))}
       </StatList>
     </StatisticSection>
@@ -21,6 +31,12 @@ export const Statistics = ({ title = 'UPLOAD STATS' }) => {
 };
 
 Statistics.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  dataStats: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
 };
-

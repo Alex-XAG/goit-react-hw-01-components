@@ -1,9 +1,7 @@
-import { TransactionItem } from './TransactionItem';
-import transactions from '../../transactions';
-import { TrHistory, Thead } from './Transactions.styled';
+import { TrHistory, Thead, TrItem, Td } from './Transactions.styled';
 import PropTypes from 'prop-types';
 
-export const TransactionList = () => {
+export const TransactionList = ({ transactions }) => {
   return (
     <TrHistory>
       <Thead>
@@ -17,12 +15,11 @@ export const TransactionList = () => {
       <tbody>
         {transactions.map(({ type, amount, currency, id }) => {
           return (
-            <TransactionItem
-              key={id}
-              type={type}
-              amount={amount}
-              currency={currency}
-            />
+            <TrItem key={id}>
+              <Td>{type}</Td>
+              <Td>{amount}</Td>
+              <Td>{currency}</Td>
+            </TrItem>
           );
         })}
       </tbody>
@@ -31,7 +28,12 @@ export const TransactionList = () => {
 };
 
 TransactionList.propTypes = {
-  type: PropTypes.string.isRequired,
-  amount: PropTypes.string,
-  currency: PropTypes.string.isRequired,
+  transactions: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ),
 };

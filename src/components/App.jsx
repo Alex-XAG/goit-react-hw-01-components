@@ -2,7 +2,10 @@ import { Profile } from '../components/Profile/Profile';
 import { Statistics } from '../components/Statistics/Statistics';
 import { FriendList } from './Friends/FriendList';
 import { TransactionList } from './Transactions/TransactionList';
-import dataUser from '../user';
+import dataUser from '../data/user.json';
+import dataStatistics from '../data/data.json';
+import dataFriends from '../data/friends.json';
+import dataTransactions from '../data/transactions.json';
 
 export const App = () => {
   return (
@@ -13,16 +16,14 @@ export const App = () => {
         userName={dataUser.username}
         tag={dataUser.tag}
         location={dataUser.location}
-        followers={dataUser.stats.followers}
-        views={dataUser.stats.views}
-        likes={dataUser.stats.likes}
+        stats={dataUser.stats}
       />
 
-      <Statistics />
+      <Statistics title="UPLOAD STATS" dataStats={dataStatistics} />
 
-      <FriendList />
+      <FriendList friends={dataFriends} />
 
-      <TransactionList />
+      <TransactionList transactions={dataTransactions} />
     </div>
   );
 };
